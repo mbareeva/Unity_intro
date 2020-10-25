@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
-    public float moveSpeed = 10;
+    public float moveSpeed = 1.0f;
     public Transform target;
 
     private float angle;
@@ -18,15 +18,12 @@ public class PlayerScript : MonoBehaviour {
         float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
         transform.Translate (new Vector3 (moveHorizontal, 0, moveVertical) * moveSpeed * Time.deltaTime);
-        
-         if (Input.GetKey(KeyCode.R))
-         { 
-            //12. + 13.
-            Vector3 relativePos = transform.forward; //links oder rechts hinzufügen
-            angle++;
-            //14. 
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            transform.rotation = rotation * Quaternion.Euler(0, angle, 0);
-         }     
+        //12. + 13. + 14.
+        Vector3 relativePos = transform.forward;
+        if (Input.GetKey (KeyCode.R)) {
+            Quaternion rotation = Quaternion.LookRotation (relativePos, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards (transform.rotation, rotation, Time.deltaTime * moveSpeed);
+            target.RotateAround (transform.position, Vector3.up, Time.deltaTime * 45);
+        }
     }
 }
