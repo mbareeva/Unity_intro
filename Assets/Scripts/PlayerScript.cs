@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour {
     public float moveSpeed = 1.0f;
     public Transform target;
-
     private float angle;
+
     // Start is called before the first frame update
     void Start () {
 
@@ -21,9 +21,14 @@ public class PlayerScript : MonoBehaviour {
         //12. + 13. + 14.
         Vector3 relativePos = transform.forward;
         if (Input.GetKey (KeyCode.R)) {
-            Quaternion rotation = Quaternion.LookRotation (relativePos, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards (transform.rotation, rotation, Time.deltaTime * moveSpeed);
-            target.RotateAround (transform.position, Vector3.up, Time.deltaTime * 45);
+            angle += 0.01f; 
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = rotation * Quaternion.Euler(0, angle, 0);
+        } 
+        if (Input.GetKey (KeyCode.L)) {
+            angle += 0.01f; 
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.down);
+            transform.rotation = rotation * Quaternion.Euler(0, angle, 0);
         }
     }
 }
