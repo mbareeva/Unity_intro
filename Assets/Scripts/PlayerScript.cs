@@ -21,14 +21,14 @@ public class PlayerScript : MonoBehaviour {
         //12. + 13. + 14.
         Vector3 relativePos = transform.forward;
         if (Input.GetKey (KeyCode.R)) {
-            angle += 0.01f; 
+            angle = 1.0f; 
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            transform.rotation = rotation * Quaternion.Euler(0, angle, 0);
+            transform.rotation = transform.rotation * Quaternion.Euler(0, +angle, 0);
         } 
         if (Input.GetKey (KeyCode.L)) {
-            angle += 0.01f; 
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.down);
-            transform.rotation = rotation * Quaternion.Euler(0, angle, 0);
+            angle = 1.0f; 
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation =  transform.rotation * Quaternion.Euler(0, -angle, 0);
         }
     }
 }

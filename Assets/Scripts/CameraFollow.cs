@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     Vector3 offset;
     void Start()
     {   //dif-ce between camera and player position.
-        offset = target.position - transform.position;
+        offset = transform.position - target.position;
     }
 
     void LateUpdate()
@@ -21,9 +21,14 @@ public class CameraFollow : MonoBehaviour
 
         //after
        // Source used: "Camera behind Player". Link: https://stackoverflow.com/a/47904587.
-        Vector3 offsetRotated = target.transform.forward * 10.0f;
-        transform.position = target.transform.position - offsetRotated;
+        // Vector3 offsetRotated = target.transform.forward * 10.0f;
+        // transform.position = target.transform.position - offsetRotated;
+        // transform.LookAt (target.transform.position);
+        // transform.position = new Vector3 (transform.position.x, transform.position.y + 6, transform.position.z);
+        
+        //19.
+        Vector3 newPos = target.transform.rotation * offset;
+        transform.position = target.transform.position + newPos;
         transform.LookAt (target.transform.position);
-        transform.position = new Vector3 (transform.position.x, transform.position.y + 6, transform.position.z);
     }
 }
