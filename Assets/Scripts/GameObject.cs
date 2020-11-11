@@ -22,7 +22,7 @@ public class GameObject : MonoBehaviour
 
     // Update is called once per frame
 
-    void Update()
+    void FixedUpdate()
      {
         foreach (Transform e in list) {
                 e.transform.Rotate(new Vector3(0, 0, -1f), Space.World);

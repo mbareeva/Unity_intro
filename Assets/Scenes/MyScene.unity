@@ -1983,6 +1983,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Logs
       objectReference: {fileID: 0}
+    - target: {fileID: 8821100276204862744, guid: 5a4dc72c2ee7bbe4a9b2bb21a58ea218,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a4dc72c2ee7bbe4a9b2bb21a58ea218, type: 3}
 --- !u!1001 &8036701774309147474
